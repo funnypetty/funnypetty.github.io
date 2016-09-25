@@ -4,8 +4,13 @@ CACHE MANIFEST
 CACHE:
 index.html
 post.html
-assets/
-images/
+assets/post.min.js
+assets/script.min.js
+assets/style.min.css
+assets/post.min.css
+images/background.png
+images/favicon.ico
+images/logo.png
 
 NETWORK:
 *
