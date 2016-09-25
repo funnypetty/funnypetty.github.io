@@ -1,0 +1,14 @@
+CACHE MANIFEST
+#v1.0
+
+CACHE:
+index.html
+post.html
+assets/
+images/
+
+NETWORK:
+*
+
+FALLBACK:
+/ 404.html
