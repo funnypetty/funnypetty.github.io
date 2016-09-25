@@ -67,7 +67,12 @@ li {
 .section > iframe {
 	max-width: 450px;
 	width: 90%;
-	max-height: 250px;
+	max-height: 450px;
+}
+
+.section > iframe {
+	border: none;
+	height: 450px;
 }
 
 .section .caption{

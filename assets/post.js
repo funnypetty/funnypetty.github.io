@@ -26,17 +26,31 @@
 		
 		//Validate
 		if( hasNull( data ) ) {
-			statusEl.innerHTML = 'Vui lòng điền đầy đủ các trường !!';
-			window.setTimeout( function() {
-				statusEl.innerHTML = '';
-			}, 5000 );
+			postStatus( 'Vui lòng điền đủ các trường !!' );
 			return;
 		}
 		
 		//Combine & replace html
 		var html = doc.getElementById( data.type + '-html' ).innerHTML.trim();
+		var youtubeQuery = data.link.split( '?' )[1];
 		
-		var videoId = data.link.split( '=' )[1] ;
+		//Check if link of video is of youtube
+		if( data.link.indexOf( /youtube.com/g ) === -1 && data.type == 'video' ) {
+			postStatus( 'Link của video không phải là youtube' );
+			return;
+		}
+		
+		//If link doesn't contain id of video
+		if( !youtubeQuery && data.type == 'video' ) {
+			postStatus( 'Link của video không hợp lệ' );
+			return;
+		}
+		var videoId = getQueryParams(  ).v;
+		if( !videoId && data.type == 'video' ) {
+			postStatus( 'Link của video không hợp lệ' );
+			return;
+		}
+		
 		var link = data.type == 'picture' ? data.link : videoId;
 		html = html.replace( /{@caption}/g, data.caption );
 		html = html.replace( '{@link}', link );
@@ -57,6 +71,26 @@
 				return true;
 		}
 		return false;
+	}
+	
+	//Fn show status
+	function postStatus( status ) {
+		statusEl.innerHTML = status;
+		window.setTimeout( function() {
+			statusEl.innerHTML = '';
+		}, 5000 );
+	}
+
+	//Fn get param
+	function getQueryParams(qs) {
+		qs = qs.split('+').join(' ');
+		var params = {},
+			tokens,
+			re = /[?&]?([^=]+)=([^&]*)/g;
+		while (tokens = re.exec(qs)) {
+			params[decodeURIComponent(tokens[1])] = decodeURIComponent(tokens[2]);
+		}
+		return params;
 	}
 	
 } ) ();

@@ -4,8 +4,7 @@
 	var doc = document;
 	var contentDiv = doc.getElementById( 'body' );
 	var loadmoreBtn = doc.getElementById( 'more' );
-	var absPath = 'http://localhost/funnypetty/';
-	var newestUrl = absPath + 'pages/newest.html';
+	var newestUrl = 'pages/newest.html';
 	
 	//Automatic load newest post
 	window.onload = function() {
@@ -29,7 +28,7 @@
 			return;
 		}
 		
-		var url = absPath + 'pages/page-' + newestPage + '.html';
+		var url = 'pages/page-' + newestPage + '.html';
 		getMorePost( url, contentDiv );
 		
 		//Change page
@@ -57,7 +56,7 @@
 		//Append post
 		xhttp.onreadystatechange = function() {
 			if ( this.readyState == 4 && this.status == 200 ) {
-				contentDiv.innerHTML = contentDiv.innerHTML + xhttp.responseText;
+				contentDiv.insertAdjacentHTML( 'beforeend', xhttp.responseText );
 			}
 		};
 	}
