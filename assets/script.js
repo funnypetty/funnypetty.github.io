@@ -4,7 +4,6 @@
 	var doc = document;
 	var contentDiv = doc.getElementById( 'body' );
 	var loadmoreBtn = doc.getElementById( 'more' );
-	var page = 1;
 	var absPath = 'http://localhost/funnypetty/';
 	var newestUrl = absPath + 'pages/newest.html';
 	
@@ -39,10 +38,6 @@
 		//Change loading text
 		this.innerHTML = 'Xem thêm...';
 		this.setAttribute( 'class', '' );
-		
-		//Change historyState
-		page++;
-		history.pushState( 'Funny Petty', '', '/page/' + page );
 	} )
 	
 	function getMorePost( url, contentDiv ) {
