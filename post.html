@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<title>Get post HTML</title>
+		<meta charset="utf-8" />
+		<link href="assets/post.min.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div id="status"></div>
+		<div id="api">
+			<p>Upload video: <a href="https://youtube.com/upload" target="_blank">https://youtube.com/upload</a></p>
+			<p>Upload picture: <a href="https://imgur.com/" target="_blank">https://imgur.com/</a></p>
+		</div>
+		<div style="display: none;" id="picture-html">
+<div class="section">
+  <p class="caption">{@caption}</p>
+  <img src="{@link}" title="{@caption}" alt="{@caption}" />
+  <div class="meta">
+    <p class="by">/*By {@author}*/</p>
+    <div class="fb-like" data-href="http://funnypetty.com" data-width="300" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+  </div>
+</div>
+		</div>
+		<div style="display: none;" id="video-html">
+<div class="section">
+  <p class="caption">{@caption}</p>
+  <iframe src="https://youtube.com/embed/{@link}?controls=0&loop=1&autoplay=1" title="{@caption}" alt="{@caption}"></iframe>
+  <div class="meta">
+   <p class="by">/*By {@author}*/</p>
+   <div class="fb-like" data-href="http://funnypetty.com" data-width="300" data-layout="button_count" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+  </div>
+</div>
+		</div>
+		<div id="form">
+			Caption:
+			<input type="text" id="caption" placeholder="Nhập caption" />
+			Link:
+			<input type="text" id="link" value="http://" />
+			Author:
+			<input type="text" id="author" placeholder="Nhập tác giả" />
+			Loại:
+			<input type="radio" name="type" id="type-video" /> <label>Video</label>
+			<input type="radio" name="type" id="type-picture" checked /><label>Ảnh</label>
+			<button id="get-code">Lấy code</button>
+		</div>
+		<div id="result">
+			<textarea id="result-box" readonly placeholder="Your code goes here..."></textarea>
+		</div>
+		<script src="assets/post.min.js"></script>
+	</body>
+</html>

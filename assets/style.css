@@ -1,0 +1,143 @@
+﻿/*Reset
+======================================================*/
+*{
+	padding: 0;
+	margin: 0;
+	box-sizing: border-box;
+	font-family: 'courier new';
+}
+
+body {
+	background-image: url("../images/background.png");
+	text-align: center;
+}
+a {
+	text-decoration: none;
+}
+li {
+	list-style-type: none;
+}
+
+/*Wrapper
+======================================================*/
+#big {
+	width: 90%;
+	max-width: 1000px;
+	background-color: #f9f9f9;
+	margin: 0px auto;
+}
+
+#title img {
+	margin: 20px;
+}
+
+/*Head
+======================================================*/
+#head {
+	margin-bottom: 10px;
+	text-align: center;
+}
+#head #send{
+	width: 80%;
+	margin: 0px auto;
+	color: #FF2FD3;
+	font-size: 16px;
+	font-weight: normal;
+}
+#head #send a{
+	color: green;
+	font-style: italic;
+}
+#send a:hover {
+	text-decoration: underline;
+}
+
+/*Content
+======================================================*/
+.section {
+	margin-top: 100px;
+	clear: both;
+}
+.section p {
+	font-weight: bold;
+	font-size: 16px;
+}
+
+.section img,
+.section iframe {
+	max-width: 450px;
+	width: 90%;
+	max-height: 250px;
+}
+
+.section .caption{
+	color: #666666;
+	box-sizing: border-box;
+	width: 70%;
+	margin: 40px auto 10px;		
+}
+
+.section .meta {
+	max-width: 450px;
+	width: 90%;
+	margin: 20px auto;
+}
+
+.section .by{
+	color: #666666;
+	display: block;
+	font-size: 14px;
+	font-style: italic;
+	float: left;
+}
+
+.section .fb-like {
+	margin: 0 auto;
+	float: right;
+}
+
+/*navigation
+======================================================*/
+#navigation {
+	padding: 5px;
+	font-weight: bold;
+	cursor: pointer;
+	margin: 100px auto;
+	max-width: 450px;
+	width: 90%;
+	-webkit-touch-callout: none; 
+	-webkit-user-select: none;   
+	-khtml-user-select: none;    
+	-moz-user-select: none;     
+	-ms-user-select: none;       
+	user-select: none;  
+}
+
+#navigation a:hover {
+	color: #FF2FD3;
+}
+
+.loading {
+	pointer-events: none;
+	color: #515151;
+	cursor: text;
+}
+
+
+/*Footer
+======================================================*/
+#bottom {
+	text-align: center;
+	clear: both;
+	padding-bottom: 50px;
+}
+
+#bottom #iconr {
+	color: #888;
+	font-size: 14px;
+	margin-top: 50px;
+}
+
+#fp-fb {
+	margin: 0 auto;
+}
