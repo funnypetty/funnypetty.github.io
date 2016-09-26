@@ -12,5 +12,7 @@ images/background.png
 images/favicon.ico
 images/logo.png
 
+NETWORK:
+
 FALLBACK:
 / 404.html
