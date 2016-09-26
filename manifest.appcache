@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#26.09.16 v1.2
+#26-09-16:v1.2
 
 CACHE:
 index.html
@@ -11,9 +11,6 @@ assets/post.min.css
 images/background.png
 images/favicon.ico
 images/logo.png
-
-NETWORK:
-*
 
 FALLBACK:
 / 404.html
