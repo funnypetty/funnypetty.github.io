@@ -99,6 +99,8 @@ li {
 .section .fb-like {
 	margin: 0 auto;
 	float: right;
+	width: 25%;
+    height: 40px;
 }
 
 /*navigation
