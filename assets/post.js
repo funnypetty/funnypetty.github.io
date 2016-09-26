@@ -35,7 +35,7 @@
 		var youtubeQuery = data.link.split( '?' )[1];
 		
 		//Check if link of video is of youtube
-		if( data.link.indexOf( /youtube.com/g ) === -1 && data.type == 'video' ) {
+		if( data.link.indexOf( 'youtube.com' ) === -1 && data.type == 'video' ) {
 			postStatus( 'Link của video không phải là youtube' );
 			return;
 		}
@@ -45,7 +45,7 @@
 			postStatus( 'Link của video không hợp lệ' );
 			return;
 		}
-		var videoId = getQueryParams(  ).v;
+		var videoId = getQueryParams( youtubeQuery ).v;
 		if( !videoId && data.type == 'video' ) {
 			postStatus( 'Link của video không hợp lệ' );
 			return;
@@ -53,7 +53,7 @@
 		
 		var link = data.type == 'picture' ? data.link : videoId;
 		html = html.replace( /{@caption}/g, data.caption );
-		html = html.replace( '{@link}', link );
+		html = html.replace( /{@link}/g, link );
 		html = html.replace( '{@author}', data.author );
 		
 		codeBox.innerHTML = html;
@@ -76,6 +76,7 @@
 	//Fn show status
 	function postStatus( status ) {
 		statusEl.innerHTML = status;
+		codeBox.innerHTML = '';
 		window.setTimeout( function() {
 			statusEl.innerHTML = '';
 		}, 5000 );
