@@ -37,18 +37,19 @@ li {
 	margin-bottom: 10px;
 	text-align: center;
 }
-#head #send{
+#head {
 	width: 80%;
 	margin: 0px auto;
 	color: #FF2FD3;
 	font-size: 16px;
 	font-weight: normal;
 }
-#head #send a{
+#head a{
 	color: green;
 	font-style: italic;
+	line-height: 30px;
 }
-#send a:hover {
+#head a:hover {
 	text-decoration: underline;
 }
 
@@ -75,11 +76,18 @@ li {
 	height: 450px;
 }
 
-.section .caption{
+.section .caption {
+	margin: 0 auto 30px;
+	width: 90%;
+	max-width: 450px;
+}
+
+.section .caption a{
 	color: #666666;
-	box-sizing: border-box;
-	width: 70%;
-	margin: 40px auto 10px;		
+}
+
+.section .caption a:hover{
+	color:#FF2FD3
 }
 
 .section .meta {
@@ -99,7 +107,7 @@ li {
 .section .fb-like {
 	margin: 0 auto;
 	float: right;
-	width: 25%;
+	width: 30%;
     height: 40px;
 }
 

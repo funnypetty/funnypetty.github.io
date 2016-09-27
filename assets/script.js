@@ -1,30 +1,34 @@
 ;(function () {
 	"use strict";
 	
-	var doc = document;
-	var contentDiv = doc.getElementById( 'body' );
-	var loadmoreBtn = doc.getElementById( 'more' );
-	var newestUrl = 'pages/newest.html';
+	//Initializing include files
+	var root = '/funnypetty/';
+	var includeFolder = root + 'includes/';
+	w3IncludeHTML( includeFolder );
 	
-	//Automatic load newest post
-	window.onload = function() {
-		getMorePost( newestUrl, contentDiv );
-	}
-	
+	var doc = document,
+		contentDiv = doc.getElementById( 'body' ),
+		page = 1;
 	
 	//Load more post when click on loadmoreBtn
-	loadmoreBtn.addEventListener( 'click', function() {
+	doc.addEventListener( 'click', function( e ) {
+		if( e.target.id !== 'more' ) {
+			return;
+		}
+		
+		var _this = e.target;
+		
 		//Set loading text
-		this.innerHTML = 'Đang tải...';
-		this.setAttribute( 'class', 'loading' );
+		_this.innerHTML = 'Đang tải...';
+		_this.setAttribute( 'class', 'loading' );
 		
 		//Declare vars
-		var newestPage = this.getAttribute( 'data-newest-page' );
+		var newestPage = _this.getAttribute( 'data-newest-page' );
 		newestPage = parseInt( newestPage );
 		
 		//When loaded all post
 		if( newestPage === 0 ) {
-			this.innerHTML = 'Đã tải hết !';
+			_this.innerHTML = 'Đã tải hết !';
 			return;
 		}
 		
@@ -32,11 +36,15 @@
 		getMorePost( url, contentDiv );
 		
 		//Change page
-		this.setAttribute( 'data-newest-page', newestPage - 1 );
+		_this.setAttribute( 'data-newest-page', newestPage - 1 );
 		
 		//Change loading text
-		this.innerHTML = 'Xem thêm...';
-		this.setAttribute( 'class', '' );
+		_this.innerHTML = 'Xem thêm...';
+		_this.setAttribute( 'class', '' );
+		
+		//pushState for SEO
+		page++;
+		history.pushState( '', '', root + 'page-' + page );
 	} )
 	
 	function getMorePost( url, contentDiv ) {
@@ -50,8 +58,6 @@
 			// code for IE6, IE5
 			xhttp = new ActiveXObject( "Microsoft.XMLHTTP" );
 		}
-		xhttp.open( "GET", url, true );
-		xhttp.send();
 		
 		//Append post
 		xhttp.onreadystatechange = function() {
@@ -59,6 +65,9 @@
 				contentDiv.insertAdjacentHTML( 'beforeend', xhttp.responseText );
 			}
 		};
+		
+		xhttp.open( "GET", url, true );
+		xhttp.send();
 	}
 	
 })( window );
