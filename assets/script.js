@@ -14,6 +14,22 @@
 	var firstScriptTag = doc.getElementsByTagName('script')[0];
 	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 		
+		
+	function onYouTubeIframeAPIReady() {
+								player = new YT.Player( 'yt-content-1', {
+									videoId: 'ijIEoXTvhT0',
+									playerVars: { 'autoplay': 1, 'controls': 0 },
+									events: {
+										'onReady': fn
+									}
+								});
+							}
+							
+							function fn( event ) {
+								event.target.playVideo();
+							}
+	
+		
 	//Load newest
 	getMorePost( url, contentDiv );
 	
@@ -83,43 +99,20 @@
 					//Youtube API 
 					var player;
 					var iId = 'yt-iframe-' + id;
-					
+					var vId = _this.getAttribute( 'data-id' );
 					var visibility = VisSense( _this, { fullyvisible: 0.75 } );
-
+					
+					var player;
+					
+					
+					//Control monitor
 					var visibility_monitor = visibility.monitor({
 						fullyvisible: function() { 
-							var player;
-							function onYouTubeIframeAPIReady() {
-								player = new YT.Player( iId, {
-									height: '390',
-									width: '640',
-									videoId: _this.getAttribute( 'data-id' ),
-									events: {
-										'onReady': onPlayerReady
-									}
-								});
-							}
 							
-							function onPlayerReady( event ) {
-								event.target.playVideo();
-							}
 						}, 
 						hidden: function() { 
-							var player;
-							function onYouTubeIframeAPIReady() {
-								player = new YT.Player( iId, {
-									height: '390',
-									width: '640',
-									videoId: _this.getAttribute( 'data-id' ),
-									events: {
-										'onReady': onPlayerReady
-									}
-								});
-							}
+							//player.pauseVideo();
 							
-							function onPlayerReady( event ) {
-								event.target.pauseVideo();
-							}
 						}
 					}).start();
 					
