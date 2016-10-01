@@ -92,17 +92,10 @@
 					var visibility_monitor = visibility.monitor({
 						fullyvisible: function() { 
 							function onYouTubeIframeAPIReady() {
-								player = new YT.Player( 'yt-content-1', {
-									videoId: 'ijIEoXTvhT0',
+								player = new YT.Player( iId, {
+									videoId: vId,
 									playerVars: { 'autoplay': 1, 'controls': 0 },
-									events: {
-										'onReady': fn
-									}
 								});
-							}
-							
-							function fn( event ) {
-								event.target.playVideo();
 							}
 						}, 
 						hidden: function() { 
