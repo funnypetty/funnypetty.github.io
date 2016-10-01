@@ -19,6 +19,9 @@
 	var pictureTxt = doc.getElementById( 'type-picture' );
 	var postModelHTML = doc.getElementById( 'model-html' ).innerHTML;
 	
+	//Error with CloudFlare :ff
+	
+	
 	//When click on Get Code button
 	btn.onclick = function() {
 		//Get data
