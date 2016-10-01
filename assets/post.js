@@ -92,6 +92,7 @@
 		var postLink = data.caption.latinise();
 		postLink = postLink.toLowerCase();
 		postLink = postLink.replace( / /g, '-' );
+		postLink = postLink.replace( /[^a-zA-Z ]/g, '' );
 		postLink = postLink + '-' + time;
 		
 		html = html.replace( /{@caption}/g, data.caption );
