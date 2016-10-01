@@ -17,7 +17,7 @@
 	var authorTxt = doc.getElementById( 'author' );
 	var videoTxt = doc.getElementById( 'type-video' );
 	var pictureTxt = doc.getElementById( 'type-picture' );
-	var postModelHTML = doc.getElementById( 'model-html' ).innerHTML;
+	var postModelHTML = doc.getElementById( 'model-html' ).textContent;
 	console.log( postModelHTML );
 	
 	//When click on Get Code button
