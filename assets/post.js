@@ -24,7 +24,8 @@
 	//Append post
 	xhttp.onreadystatechange = function() {
 		if ( this.readyState == 4 && this.status == 200 ) {
-			postModelHTML = xhttp.responseText;
+			
+			postModelHTML = eval( xhttp.responseText );
 		}
 	};
 	
