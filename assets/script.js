@@ -1,14 +1,20 @@
 ;(function () {
 	"use strict";
 	
-	//Initializing include files
-	var root = '/funnypetty/';
-	var includeFolder = root + 'includes/';
-	w3IncludeHTML( includeFolder );
+	
+	var tag = document.createElement('script');
+	tag.src = "//www.youtube.com/player_api";
+	var firstScriptTag = document.getElementsByTagName('script')[0];
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
 	
 	var doc = document,
 		contentDiv = doc.getElementById( 'body' ),
-		page = 1;
+		page = 1,
+		id = 0,
+		url = '/includes/newest.html';
+
+	//Load newest
+	getMorePost( url, contentDiv );
 	
 	//Load more post when click on loadmoreBtn
 	doc.addEventListener( 'click', function( e ) {
@@ -44,7 +50,7 @@
 		
 		//pushState for SEO
 		page++;
-		history.pushState( '', '', root + 'page-' + page );
+		history.pushState( '', '', '/page-' + page );
 	} )
 	
 	function getMorePost( url, contentDiv ) {
@@ -63,11 +69,36 @@
 		xhttp.onreadystatechange = function() {
 			if ( this.readyState == 4 && this.status == 200 ) {
 				contentDiv.insertAdjacentHTML( 'beforeend', xhttp.responseText );
+				
+				//Only play video when it's visible
+				var ytIframes = doc.getElementsByClassName( 'yt-content' );
+				for( var i = 0; i < ytIframes.length; i++ ) {
+					
+					//Get iframe
+					var _this = ytIframes[i];
+					id++;
+					_this.setAttribute( 'id', 'yt-iframe-' + id );
+					
+					//Youtube API 
+					var player;
+					var iId = 'yt-iframe-' + id;
+					function onYouTubeIframeAPIReady() {
+						player = new YT.Player( iId, {
+							events: {
+								'onReady': onPlayerReady
+							}
+						});
+					}
+					
+					function onPlayerReady( event ) {
+						console.log( 'a' );
+						event.target.playVideo();
+					}
+				}
 			}
 		};
 		
 		xhttp.open( "GET", url, true );
 		xhttp.send();
 	}
-	
 })( window );
