@@ -7,40 +7,10 @@
 	String.prototype.latinize=String.prototype.latinise;
 	String.prototype.isLatin=function(){return this==this.latinise()}
 
-	//Get model of post-page
-	var xhttp,
-		postModelHTML,
-		url = 'posts/model.html';
-		
-	//Send AJAX
-	if ( window.XMLHttpRequest ) {
-		xhttp = new XMLHttpRequest();
-	} 
-	else {
-		// code for IE6, IE5
-		xhttp = new ActiveXObject( "Microsoft.XMLHTTP" );
-	}
-	
-	//Append post
-	xhttp.onreadystatechange = function() {
-		if ( this.readyState == 4 && this.status == 200 ) {
-			var responseEl = doc.createElement( 'div' );
-			responseEl.setAttribute( 'id', 'responseEl' );
-			responseEl.innerHTML = xhttp.responseText;
-			var script = doc.querySelectorAll( '#responseEl #body script' );
-			console.log( script );
-			var scriptText = script[0].innerHTML;
-			postModelHTML = eval( scriptText );
-			console.log( postModelHTML );
-		}
-	};
-	
-	xhttp.open( "GET", url, true );
-	xhttp.send();
-	
 	//Get El
 	var doc = document;
 	var btn = doc.getElementById( 'get-code' );
+	var postModelHTML = doc.getElementById( 'model-html' ).innerHTML;
 	var codeBox = doc.getElementById( 'result-box' );
 	var statusEl = doc.getElementById( 'status' );
 	var captionTxt = doc.getElementById( 'caption' );

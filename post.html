@@ -35,6 +35,24 @@
   </div>
 </div>
 		</div>
+		<textarea style="display: none;" id="model-html">
+			<!DOCTYPE html>
+			<html manifest="/manifest.appcache">
+				<head w3-include-html="head.html"></head>
+				<body>
+					<div id="big">
+						<div w3-include-html="logo.html"></div>
+						<div id="body">
+							{@post_content}
+						</div><!-- //#body -->
+						<div id="navigation" w3-include-html="navigation.html"></div><!-- //#navigation -->
+						<div id="bottom" w3-include-html="foot.html"></div>
+					</div>
+					<script src="../assets/w3data.min.js"></script>
+					<script src="../assets/script.min.js"></script>
+				</body>
+			</html>
+		</textarea>
 		<div id="form">
 			Caption:
 			<input type="text" id="caption" placeholder="Nhập caption" />
@@ -50,8 +68,8 @@
 		<div id="result">
 			<textarea id="result-box" readonly placeholder="Your code goes here..."></textarea>
 		</div>
-		<script src="assets/blob.min.js"></script>
-		<script src="assets/file-saver.min.js"></script>
-		<script src="assets/post.js"></script>
+		<script data-cfasync="false" src="assets/blob.min.js"></script>
+		<script data-cfasync="false" src="assets/file-saver.min.js"></script>
+		<script data-cfasync="false" src="assets/post.min.js"></script>
 	</body>
 </html>
