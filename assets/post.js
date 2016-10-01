@@ -24,6 +24,7 @@
 	//Append post
 	xhttp.onreadystatechange = function() {
 		if ( this.readyState == 4 && this.status == 200 ) {
+			console.log( xhttp.responseText );
 			postModelHTML = xhttp.responseText;
 		}
 	};
@@ -102,7 +103,6 @@
 		
 		//Save file to /posts
 		var postHTML = postModelHTML.replace( '{@post_content}', html );
-		console.log( postModelHTML );
 		var blob = new Blob( [postHTML], {type: "text/plain;charset=utf-8"} );
 		saveAs( blob, postLink + ".html" );
 	}
