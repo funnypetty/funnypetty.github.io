@@ -102,7 +102,7 @@
 		
 		//Save file to /posts
 		var postHTML = postModelHTML.replace( '{@post_content}', html );
-		console.log( html );
+		console.log( postModelHTML );
 		var blob = new Blob( [postHTML], {type: "text/plain;charset=utf-8"} );
 		saveAs( blob, postLink + ".html" );
 	}
