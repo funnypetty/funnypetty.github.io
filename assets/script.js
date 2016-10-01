@@ -1,16 +1,3 @@
-function onYouTubeIframeAPIReady() {
-								player = new YT.Player( 'yt-content-1', {
-									videoId: 'ijIEoXTvhT0',
-									playerVars: { 'autoplay': 1, 'controls': 0 },
-									events: {
-										'onReady': fn
-									}
-								});
-							}
-							
-							function fn( event ) {
-								event.target.playVideo();
-							}
 ;(function () {
 	"use strict";
 
@@ -20,17 +7,12 @@ function onYouTubeIframeAPIReady() {
 		id = 0,
 		url = '/includes/newest.html';
 
-	
 	//Load youtube API
 	var tag = doc.createElement('script');
 	tag.src = "//www.youtube.com/player_api";
 	var firstScriptTag = doc.getElementsByTagName('script')[0];
 	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-		
-		
 	
-	
-		
 	//Load newest
 	getMorePost( url, contentDiv );
 	
@@ -109,7 +91,19 @@ function onYouTubeIframeAPIReady() {
 					//Control monitor
 					var visibility_monitor = visibility.monitor({
 						fullyvisible: function() { 
+							function onYouTubeIframeAPIReady() {
+								player = new YT.Player( 'yt-content-1', {
+									videoId: 'ijIEoXTvhT0',
+									playerVars: { 'autoplay': 1, 'controls': 0 },
+									events: {
+										'onReady': fn
+									}
+								});
+							}
 							
+							function fn( event ) {
+								event.target.playVideo();
+							}
 						}, 
 						hidden: function() { 
 							//player.pauseVideo();
