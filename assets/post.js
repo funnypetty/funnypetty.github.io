@@ -27,7 +27,7 @@
 			var responseEl = doc.createElement( 'div' );
 			responseEl.setAttribute( 'id', 'responseEl' );
 			responseEl.innerHTML = xhttp.responseText;
-			var script = doc.querySelector( '#responseEl #body script' );
+			var script = doc.querySelector( '#responseEl > #body > script' );
 			var scriptText = script.innerHTML;
 			postModelHTML = eval( scriptText );
 			console.log( postModelHTML );
