@@ -28,6 +28,7 @@
 			responseEl.setAttribute( 'id', 'responseEl' );
 			responseEl.innerHTML = xhttp.responseText;
 			var script = doc.querySelectorAll( '#responseEl #body script' );
+			console.log( script );
 			var scriptText = script[0].innerHTML;
 			postModelHTML = eval( scriptText );
 			console.log( postModelHTML );
