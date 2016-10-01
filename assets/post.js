@@ -6,31 +6,6 @@
 	String.prototype.latinise=function(){return this.replace(/[^A-Za-z0-9\[\] ]/g,function(a){return Latinise.latin_map[a]||a})};
 	String.prototype.latinize=String.prototype.latinise;
 	String.prototype.isLatin=function(){return this==this.latinise()}
-
-	//Get model of post-page
-	var xhttp,
-		postModelHTML,
-		url = 'posts/model.html';
-		
-	//Send AJAX
-	if ( window.XMLHttpRequest ) {
-		xhttp = new XMLHttpRequest();
-	} 
-	else {
-		// code for IE6, IE5
-		xhttp = new ActiveXObject( "Microsoft.XMLHTTP" );
-	}
-	
-	//Append post
-	xhttp.onreadystatechange = function() {
-		if ( this.readyState == 4 && this.status == 200 ) {
-			postModelHTML = xhttp.responseText;
-			console.log( postModelHTML );
-		}
-	};
-	
-	xhttp.open( "GET", url, true );
-	xhttp.send();
 	
 	//Get El
 	var doc = document;
@@ -42,6 +17,7 @@
 	var authorTxt = doc.getElementById( 'author' );
 	var videoTxt = doc.getElementById( 'type-video' );
 	var pictureTxt = doc.getElementById( 'type-picture' );
+	var postModelHTML = doc.getElementById( 'model-html' ).innerHTML;
 	
 	//When click on Get Code button
 	btn.onclick = function() {
