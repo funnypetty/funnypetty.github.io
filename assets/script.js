@@ -1,18 +1,19 @@
 ;(function () {
 	"use strict";
-	
-	
-	var tag = document.createElement('script');
-	tag.src = "//www.youtube.com/player_api";
-	var firstScriptTag = document.getElementsByTagName('script')[0];
-	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
-	
+
 	var doc = document,
 		contentDiv = doc.getElementById( 'body' ),
 		page = 1,
 		id = 0,
 		url = '/includes/newest.html';
 
+	
+	//Load youtube API
+	var tag = doc.createElement('script');
+	tag.src = "//www.youtube.com/player_api";
+	var firstScriptTag = doc.getElementsByTagName('script')[0];
+	firstScriptTag.parentNode.insertBefore(tag, firstScriptTag);
+		
 	//Load newest
 	getMorePost( url, contentDiv );
 	
@@ -82,18 +83,46 @@
 					//Youtube API 
 					var player;
 					var iId = 'yt-iframe-' + id;
-					function onYouTubeIframeAPIReady() {
-						player = new YT.Player( iId, {
-							events: {
-								'onReady': onPlayerReady
-							}
-						});
-					}
 					
-					function onPlayerReady( event ) {
-						console.log( 'a' );
-						event.target.playVideo();
-					}
+					var visibility = VisSense( _this, { fullyvisible: 0.75 } );
+
+					var visibility_monitor = visibility.monitor({
+						fullyvisible: function() { 
+							var player;
+							function onYouTubeIframeAPIReady() {
+								player = new YT.Player( iId, {
+									height: '390',
+									width: '640',
+									videoId: _this.getAttribute( 'data-id' ),
+									events: {
+										'onReady': onPlayerReady
+									}
+								});
+							}
+							
+							function onPlayerReady( event ) {
+								event.target.playVideo();
+							}
+						}, 
+						hidden: function() { 
+							var player;
+							function onYouTubeIframeAPIReady() {
+								player = new YT.Player( iId, {
+									height: '390',
+									width: '640',
+									videoId: _this.getAttribute( 'data-id' ),
+									events: {
+										'onReady': onPlayerReady
+									}
+								});
+							}
+							
+							function onPlayerReady( event ) {
+								event.target.pauseVideo();
+							}
+						}
+					}).start();
+					
 				}
 			}
 		};
