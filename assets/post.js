@@ -18,6 +18,7 @@
 	var videoTxt = doc.getElementById( 'type-video' );
 	var pictureTxt = doc.getElementById( 'type-picture' );
 	var postModelHTML = doc.getElementById( 'model-html' ).innerHTML;
+	console.log( postModelHTML );
 	
 	//When click on Get Code button
 	btn.onclick = function() {
