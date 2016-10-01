@@ -24,9 +24,12 @@
 	//Append post
 	xhttp.onreadystatechange = function() {
 		if ( this.readyState == 4 && this.status == 200 ) {
+			rpEl = doc.createElement( 'div' );
+			rpEl.innerHTML = xhttp.responseText;
+			rpEl = rpEl.childNodes;
+			var body = rpEl.querySelectorAll( '#body' );
 			
-			postModelHTML = eval( xhttp.responseText );
-			console.log( postModelHTML );
+			console.log( body );
 		}
 	};
 	
