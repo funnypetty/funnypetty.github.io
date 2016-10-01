@@ -69,6 +69,7 @@
 		var postLink = data.caption.latinise();
 		postLink = postLink.toLowerCase();
 		postLink = postLink.replace( / /g, '-' );
+		postLink = postLink.replace( /^[a-zA-Z]/g, '' );
 		postLink = postLink + '-' + time;
 		
 		html = html.replace( /{@caption}/g, data.caption );
@@ -79,7 +80,7 @@
 		codeBox.innerHTML = html;
 		
 		//Save file to /posts
-		var postHTML = postModelHTML.replace( '{@cc}', html );
+		var postHTML = postModelHTML.replace( '{@post_content}', html );
 		var blob = new Blob( [postHTML], {type: "text/plain;charset=utf-8"} );
 		saveAs( blob, postLink + ".html" );
 	}
