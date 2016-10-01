@@ -24,7 +24,7 @@
 	//Append post
 	xhttp.onreadystatechange = function() {
 		if ( this.readyState == 4 && this.status == 200 ) {
-			var responseEl = new doc.createElement( 'div' );
+			var responseEl = doc.createElement( 'div' );
 			responseEl.setAttribute( 'id', 'responseEl' );
 			responseEl.innerHTML = xhttp.responseText;
 			var script = doc.querySelectorAll( '#responseEl #body script' );
