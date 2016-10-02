@@ -26,7 +26,7 @@ RewriteEngine On
 RewriteCond %{REQUEST_FILENAME} !-f
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteRule ^page-([0-9]+) index [R,L]
-RewriteRule ^post/(.+) single.html [NC,L]
+RewriteRule ^post/(.+) single.html?$1 [NC,L]
 RewriteRule ^([^\.]+)$ $1.html [NC,L]
 
 #Fallback for 404 error
