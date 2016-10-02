@@ -56,62 +56,20 @@ window.onYouTubeIframeAPIReady = function() {
 	"use strict";
 	var doc = document,
 		contentDiv = doc.getElementById( 'body' ),
-		navigationDiv = doc.getElementById( 'navigation' ),
-		page = 1,
-		url = '/includes/newest.html',
-		naviUrl = '/includes/navigation.html';
-
-	//Load navigation
-	ajax( naviUrl, function( response ) {
-		navigationDiv.innerHTML = response;
-	} )
+		url = '/posts/' + getFileName() + '.html';
+		
+	//Load content based on fileName
+	ajax( url, function( response ) {
+		contentDiv.insertAdjacentHTML( 'beforeend', response );
+		console.log( response );
+		window.onYouTubeIframeAPIReady();
+	})
 	
-	//Load newest
-	getMorePost( url, contentDiv );
-	
-	//Load more post when click on loadmoreBtn
-	doc.addEventListener( 'click', function( e ) {
-		if( e.target.id !== 'more' ) {
-			return;
-		}
-		
-		var _this = e.target;
-		
-		//Set loading text
-		_this.innerHTML = 'Đang tải...';
-		_this.setAttribute( 'class', 'loading' );
-		
-		//Declare vars
-		var newestPage = _this.getAttribute( 'data-newest-page' );
-		newestPage = parseInt( newestPage );
-		
-		//When loaded all post
-		if( newestPage === 0 ) {
-			_this.innerHTML = 'Đã tải hết !';
-			return;
-		}
-		
-		var url = 'pages/page-' + newestPage + '.html';
-		getMorePost( url, contentDiv );
-		
-		//Change page
-		_this.setAttribute( 'data-newest-page', newestPage - 1 );
-		
-		//Change loading text
-		_this.innerHTML = 'Xem thêm...';
-		_this.setAttribute( 'class', '' );
-		
-		//pushState for SEO
-		page++;
-		history.pushState( '', '', '/page-' + page );
-	} )
-	
-	function getMorePost( url, contentDiv ) {
-		ajax( url, function( response ) {
-			contentDiv.insertAdjacentHTML( 'beforeend', response );
-			window.onYouTubeIframeAPIReady();
-			
-		} )
+	function getFileName() {
+		var fileNameArr = location.href.split( '/' );
+		fileNameArr = fileNameArr.filter( function( n ) {return n != "" } );
+		var fileName = fileNameArr[fileNameArr.length - 1];
+		return fileName;
 	}
 	
 	function ajax( url, callback ) {
@@ -137,4 +95,3 @@ window.onYouTubeIframeAPIReady = function() {
 		xhttp.send();
 	}
 })( window );
-

@@ -72,7 +72,8 @@ li {
 }
 
 .section > .yt-content {
-	min-height: 450px;
+	min-height: 250px;
+	min-width: 250px;
 }
 
 .section > iframe {
@@ -81,7 +82,7 @@ li {
 }
 
 .section .caption {
-	margin: 0 auto 30px;
+	margin: 0 auto 20px;
 	width: 90%;
 	max-width: 450px;
 }
@@ -97,7 +98,7 @@ li {
 .section .meta {
 	max-width: 450px;
 	width: 90%;
-	margin: 20px auto;
+	margin: 10px auto;
 }
 
 .section .by{
@@ -109,10 +110,9 @@ li {
 }
 
 .section .fb-like {
-	margin: 0 auto;
 	float: right;
-	width: 30%;
-    height: 40px;
+	max-width: 180px;
+    height: 30px;
 }
 
 /*navigation

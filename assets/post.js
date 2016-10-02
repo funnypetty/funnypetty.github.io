@@ -17,8 +17,6 @@
 	var authorTxt = doc.getElementById( 'author' );
 	var videoTxt = doc.getElementById( 'type-video' );
 	var pictureTxt = doc.getElementById( 'type-picture' );
-	var postModelHTML = doc.getElementById( 'model-html' ).textContent;
-	console.log( postModelHTML );
 	
 	//When click on Get Code button
 	btn.onclick = function() {
@@ -70,18 +68,19 @@
 		postLink = postLink.toLowerCase();
 		postLink = postLink.replace( / /g, '-' );
 		postLink = postLink.replace( /[^a-zA-Z-]/g, '' );
+		postLink = postLink.replace( /-{2,}/, '' );
 		postLink = postLink + '-' + time;
+		postLink = postLink.replace( /-{2,}/, '-' );
 		
 		html = html.replace( /{@caption}/g, data.caption );
 		html = html.replace( /{@link}/g, link );
-		html = html.replace( /{@post}/g, 'posts/' + postLink );
+		html = html.replace( /{@post}/g, 'post/' + postLink );
 		html = html.replace( /{@author}/g, data.author );
 		
 		codeBox.innerHTML = html;
 		
 		//Save file to /posts
-		var postHTML = postModelHTML.replace( '{@post_content}', html );
-		var blob = new Blob( [postHTML], {type: "text/plain;charset=utf-8"} );
+		var blob = new Blob( [html], {type: "text/plain;charset=utf-8"} );
 		saveAs( blob, postLink + ".html" );
 	}
 	
