@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html manifest="manifest.appcache">
+	<head>
+		<title>Get post HTML</title>
+		<meta charset="utf-8" />
+		<link href="assets/newpost.min.css" rel="stylesheet" />
+	</head>
+	<body>
+		<div id="status"></div>
+		<div id="api">
+			<p>Upload video: <a href="https://youtube.com/upload" target="_blank">https://youtube.com/upload</a></p>
+			<p>Upload picture: <a href="https://imgur.com/" target="_blank">https://imgur.com/</a></p>
+		</div>
+		<div style="display: none;" id="picture-html">
+<div class="section">
+  <p class="caption"><a href="{@post}" title="{@caption}">{@caption}</a></p>
+  <img src="{@link}" title="{@caption}" alt="{@caption}">
+  <div class="meta">
+    <p class="by">/*By {@author}*/</p>
+    <div class="fb-like" data-href="https://funnypetty.com/{@post}" data-width="180" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+  </div>
+</div>
+		</div>
+		<div style="display: none;" id="video-html">
+<div class="section">
+  <p class="caption"><a href="{@post}" title="{@caption}">{@caption}</a></p>
+  <div class="yt-content" data-id="{@link}"></div>
+  <div class="meta">
+    <p class="by">/*By {@author}*/</p>
+    <div class="fb-like" data-href="https://funnypetty.com/{@post}" data-width="180" data-layout="button_count" data-action="like" data-size="small" data-show-faces="false" data-share="true"></div>
+  </div>
+</div>
+		</div>
+		<div id="form">
+			Caption:
+			<input type="text" id="caption" placeholder="Nhập caption" />
+			Link:
+			<input type="text" id="link" value="http://" />
+			Author:
+			<input type="text" id="author" placeholder="Nhập tác giả" />
+			Loại:
+			<input type="radio" name="type" id="type-video" /> <label>Video</label>
+			<input type="radio" name="type" id="type-picture" checked /><label>Ảnh</label>
+			<button id="get-code">Lấy code</button>
+		</div>
+		<div id="result">
+			<textarea id="result-box" readonly placeholder="Your code goes here..."></textarea>
+		</div>
+		<script src="assets/blob.min.js"></script>
+		<script src="assets/file-saver.min.js"></script>
+		<script src="assets/newpost.min.js"></script>
+	</body>
+</html>
